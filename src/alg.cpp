@@ -15,19 +15,16 @@ double pown(double value, uint16_t n) {
 		return value;
 	}
 }
-
 uint64_t fact(uint16_t n) {
 	uint64_t fac = 1;
 	for (int i = 2; i <= n; i++) {
-		fac *= i;
+ 		fac *= i;
 	}
 	return fac;
 }
-
 double calcItem(double x, uint16_t n) {
 	return pown(x, n) / fact(n);
 }
-
 double expn(double x, uint16_t count) {
 	double exp = 0;
 	for (uint16_t i = 0; i <= count; i++) {
@@ -36,16 +33,22 @@ double expn(double x, uint16_t count) {
 	return exp;
 }
 double sinn(double x, uint16_t count) {
-	uint64_t sin = x - calcItem(x, 3);
-	for (uint16_t i = 5; i < count; i+=2) {
-		sin += calcItem(x, i);
+	double sin = 0;
+	for (uint16_t i = 1; i <= count; i++) {
+		if (i == 2)
+			sin -= calcItem(x, 2*i-1);
+		else
+			sin += calcItem(x, 2*i-1);
 	}
 	return sin;
 }
 double cosn(double x, uint16_t count) {
-	uint64_t cos = x - calcItem(x, 2);
-	for (uint16_t i = 4; i < count; i += 2) {
-		cos += calcItem(x, i);
+	double cos = 0;
+	for (uint16_t i = 1; i <= count; i++) {
+		if (i != 2)
+			cos += calcItem(x, 2*i-2);
+		else
+			cos -= calcItem(x, 2*i-2);
 	}
 	return cos;
 }
