@@ -4,14 +4,14 @@
 
 
 double pown(double value, uint16_t n) {
-if (n == 0)
-		return 1;
-	else
+  if (n == 0)
+    return 1;
+  else
 	{
 		double temp = value;
 		for (uint16_t i = 1; i < n; i++) {
 			value *= temp;
-		}
+	  }
 		return value;
 	}
 }
